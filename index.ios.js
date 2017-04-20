@@ -1,39 +1,29 @@
+var React = require('react-native');
+var {AppRegistry, StyleSheet, Text, View} = React;
+var login = require('.src/Components/Login');
+var userReducer = require('.src/reducers/user');
 
+import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux/native';
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+let store = createStore(combineReducers({userReducers}));
 
-export default class WetterWeather extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to WetterWeather!
-        </Text>
-      </View>
+class App extends React.Component{
+  render(){
+    return(
+      <Login/>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#7dace3',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: 'white',
-    fontWeight: 'bold',
-  },
-});
+class MyApp extends React.Component{
+  render(){
+    return(
+      <Provider store={store}>
+      {() => <App/>}
+      </Provider>
+    );
+  }
+}
 
 AppRegistry.registerComponent('WetterWeather', () => WetterWeather);
