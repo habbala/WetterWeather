@@ -1,7 +1,7 @@
 var React = require('react-native');
 var {AppRegistry, StyleSheet, Text, View} = React;
-var login = require('.src/Components/Login');
-var userReducer = require('.src/reducers/user');
+var Login = require('./components/Login');
+var userReducer = require('./reducers/user');
 
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux/native';
